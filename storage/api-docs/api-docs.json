@@ -1,0 +1,567 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Rent-a-Car API",
+        "description": "API dokumentacija za Rent-a-Car aplikaciju",
+        "contact": {
+            "name": "Tvoje Ime",
+            "email": "tvojemail@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/cars": {
+            "get": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Get a list of cars",
+                "operationId": "02fdc32179150604b8b5bb0485627216",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Create a new car",
+                "operationId": "f5f22a3b3f41bf9d826fca78a740e893",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "CAR_NAME",
+                                    "FUEL_TYPE",
+                                    "CAPACITY",
+                                    "PRICE",
+                                    "CAR_IMG",
+                                    "AVAILABLE"
+                                ],
+                                "properties": {
+                                    "CAR_NAME": {
+                                        "type": "string"
+                                    },
+                                    "FUEL_TYPE": {
+                                        "type": "string"
+                                    },
+                                    "CAPACITY": {
+                                        "type": "integer"
+                                    },
+                                    "PRICE": {
+                                        "type": "number"
+                                    },
+                                    "CAR_IMG": {
+                                        "type": "string"
+                                    },
+                                    "AVAILABLE": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Car created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/feedbacks": {
+            "get": {
+                "tags": [
+                    "Feedbacks"
+                ],
+                "summary": "Get list of feedbacks",
+                "operationId": "3e66914e7f9924929e48749fe4a74491",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Feedbacks"
+                ],
+                "summary": "Create a new feedback",
+                "operationId": "0105ea287c7c39e8e417c4bbe3b21eda",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "content",
+                                    "rating",
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "rating": {
+                                        "type": "integer"
+                                    },
+                                    "user_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Feedback created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get list of users",
+                "operationId": "88e08afbcf11b50e46fded873adde45e",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a new user",
+                "operationId": "1b6630a39aa4bedbcb3682f8d5017f75",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "FNAME",
+                                    "LNAME",
+                                    "LIC_NUM",
+                                    "EMAIL",
+                                    "PHONE_NUMBER",
+                                    "PASSWORD",
+                                    "GENDER"
+                                ],
+                                "properties": {
+                                    "FNAME": {
+                                        "type": "string"
+                                    },
+                                    "LNAME": {
+                                        "type": "string"
+                                    },
+                                    "LIC_NUM": {
+                                        "type": "string"
+                                    },
+                                    "EMAIL": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "PHONE_NUMBER": {
+                                        "type": "string"
+                                    },
+                                    "PASSWORD": {
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "GENDER": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User created successfully"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/cars/{id}": {
+            "get": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Get a car by ID",
+                "operationId": "86d820f37d6887f3e4fe9dbb838c684f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Car not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Update a car",
+                "operationId": "06ed258f6d4880fb6770f427b788b86d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "CAR_NAME",
+                                    "FUEL_TYPE",
+                                    "CAPACITY",
+                                    "PRICE",
+                                    "CAR_IMG",
+                                    "AVAILABLE"
+                                ],
+                                "properties": {
+                                    "CAR_NAME": {
+                                        "type": "string"
+                                    },
+                                    "FUEL_TYPE": {
+                                        "type": "string"
+                                    },
+                                    "CAPACITY": {
+                                        "type": "integer"
+                                    },
+                                    "PRICE": {
+                                        "type": "number"
+                                    },
+                                    "CAR_IMG": {
+                                        "type": "string"
+                                    },
+                                    "AVAILABLE": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Car updated successfully"
+                    },
+                    "404": {
+                        "description": "Car not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Delete a car",
+                "operationId": "3bfc1b8468ed2559dddb2552f683e071",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Car deleted successfully"
+                    },
+                    "404": {
+                        "description": "Car not found"
+                    }
+                }
+            }
+        },
+        "/api/feedbacks/{id}": {
+            "get": {
+                "tags": [
+                    "Feedbacks"
+                ],
+                "summary": "Get a feedback by ID",
+                "operationId": "bfbc4a86c2d93bb7ba91fdeec89d03e1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Feedback not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Feedbacks"
+                ],
+                "summary": "Update a feedback",
+                "operationId": "19d5130bd177af9fb8b6b5e0843c5128",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "content",
+                                    "rating"
+                                ],
+                                "properties": {
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "rating": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Feedback updated successfully"
+                    },
+                    "404": {
+                        "description": "Feedback not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Feedbacks"
+                ],
+                "summary": "Delete a feedback",
+                "operationId": "3e1e8b6663bbf2eab578736dd0bafa9b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Feedback deleted successfully"
+                    },
+                    "404": {
+                        "description": "Feedback not found"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get a user by ID",
+                "operationId": "fd7a7bb8fbb3465b84c1255920884d6b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update a user",
+                "operationId": "1dc48a768baff29290e9adc8c35db106",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "FNAME",
+                                    "LNAME",
+                                    "LIC_NUM",
+                                    "EMAIL",
+                                    "PHONE_NUMBER",
+                                    "PASSWORD",
+                                    "GENDER"
+                                ],
+                                "properties": {
+                                    "FNAME": {
+                                        "type": "string"
+                                    },
+                                    "LNAME": {
+                                        "type": "string"
+                                    },
+                                    "LIC_NUM": {
+                                        "type": "string"
+                                    },
+                                    "EMAIL": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "PHONE_NUMBER": {
+                                        "type": "string"
+                                    },
+                                    "PASSWORD": {
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "GENDER": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User updated successfully"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete a user",
+                "operationId": "6ac84b3ff1493ec66a21ed35138597e9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "User deleted successfully"
+                    },
+                    "404": {
+                        "description": "User not found"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Cars",
+            "description": "Cars"
+        },
+        {
+            "name": "Feedbacks",
+            "description": "Feedbacks"
+        },
+        {
+            "name": "Users",
+            "description": "Users"
+        }
+    ]
+}
